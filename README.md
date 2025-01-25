@@ -42,7 +42,9 @@ Follow these steps to set up and run the project locally:
       npm run dev
 ```
 
-Contributing
+---
+
+### **Contributing**:
 If you'd like to contribute to this project:
 
 1. Fork the repository.
