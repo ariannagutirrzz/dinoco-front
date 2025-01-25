@@ -14,7 +14,7 @@ An inventory management system designed for stores selling appliances and home g
 ---
 
 ## **Technologies**
-- **Frontend:** Vite.js, Mantine.dev, React Router 
+- **Frontend:** Vite.js, Mantine.dev, React Router, React Query
 
 ---
 
