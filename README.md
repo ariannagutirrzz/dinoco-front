@@ -31,14 +31,22 @@ Follow these steps to set up and run the project locally:
    ```bash
    git clone https://github.com/your-username/yeah-front.git
    cd yeah-front
-
+   ```
 ### **Installation**:  
-1. Install dependencies and run the software.
+1. Install dependencies
   ```bash    
       npm install
+  ```
+2. Run the software:
+```bash
       npm run dev
+```
 
+Contributing
+If you'd like to contribute to this project:
 
-
-
-
+1. Fork the repository.
+2. Create a new branch: git checkout -b feature/my-feature.
+3. Commit your changes: git commit -m "feat: add my feature".
+4. Push your branch: git push origin feature/my-feature.
+5. Submit a pull request.
