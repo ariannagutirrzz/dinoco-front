@@ -38,9 +38,9 @@ Follow these steps to set up and run the project locally:
       npm install
   ```
 2. Run the software:
-```bash
+   ```bash
       npm run dev
-```
+   ```
 
 ---
 
