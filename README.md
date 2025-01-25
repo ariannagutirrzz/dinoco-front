@@ -25,10 +25,15 @@ Follow these steps to set up and run the project locally:
 
 ### **Prerequisites**
 1. Install **Node.js** (version `22.3.0` recommended).  
-   [Download Node.js](https://nodejs.org/)
+   Use NVM if possible.
 
 2. Clone the repository:
    ```bash
    git clone https://github.com/your-username/yeah-front.git
    cd yeah-front
+
+### **Installation**
+ ```bash
+   npm install
+   npm run dev
 
