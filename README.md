@@ -32,9 +32,9 @@ Follow these steps to set up and run the project locally:
    ```
 ### **Installation**:  
 1. Install dependencies
-  ```bash    
+   ```bash    
       npm install
-  ```
+   ```
 2. Run the software:
    ```bash
       npm run dev
