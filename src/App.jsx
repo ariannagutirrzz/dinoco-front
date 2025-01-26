@@ -1,6 +1,14 @@
+import { MantineProvider } from "@mantine/core";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  return  <h1>TanStack React Query</h1>
+  return (
+    <>
+      <MantineProvider withGlobalClasses withNormalizeCss>
+        <AppRoutes />
+      </MantineProvider>
+    </>
+  );
 }
 
 export default App;
