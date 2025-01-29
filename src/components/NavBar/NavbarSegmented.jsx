@@ -24,11 +24,11 @@ import classes from "./NavbarSegmented.module.css";
 const tabs = {
   account: [
     { link: "/products", label: "Products", icon: IconBuildingStore },
-    { link: "", label: "Billing", icon: IconReceipt2 },
+    { link: "", label: "Vendors", icon: IconReceipt2 },
     { link: "", label: "Security", icon: IconFingerprint },
-    { link: "", label: "SSH Keys", icon: IconKey },
-    { link: "", label: "Databases", icon: IconDatabaseImport },
-    { link: "", label: "Authentication", icon: Icon2fa },
+    { link: "", label: "Deposit", icon: IconKey },
+    { link: "", label: "Clients", icon: IconDatabaseImport },
+    { link: "", label: "Users", icon: Icon2fa },
     { link: "", label: "Other Settings", icon: IconSettings },
   ],
   general: [
@@ -65,7 +65,7 @@ export function NavbarSegmented() {
     <nav className={classes.navbar}>
       <div>
         <Text fw={500} size="sm" className={classes.title} c="dimmed" mb="xs">
-          bgluesticker@mantine.dev
+          ariannavega2022@gmail.com
         </Text>
 
         <SegmentedControl
