@@ -1,6 +1,12 @@
 import apiClient from "./apiClient";
 
 export const getProducts = async () => {
-  const response = await apiClient.get("/api/products");
-  return response.data;
+  try {
+    const response = await apiClient.get("/products");
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
 };
