@@ -34,7 +34,7 @@ export default function Deposits() {
               {data?.map((deposit) => (
                 <Table.Tr key={deposit.id}>
                   <Table.Td>{deposit.id}</Table.Td>
-                  <Table.Td>{deposit.descripcion}</Table.Td>
+                  <Table.Td>{deposit.description}</Table.Td>
                 </Table.Tr>
               ))}
             </Table.Tbody>
