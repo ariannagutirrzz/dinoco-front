@@ -16,6 +16,7 @@ import {
   IconSwitchHorizontal,
   IconUsers,
   IconBuildingStore,
+  IconCarGarage
 } from "@tabler/icons-react";
 import { SegmentedControl, Text } from "@mantine/core";
 import { Link } from "react-router-dom";
@@ -26,7 +27,7 @@ const tabs = {
     { link: "/products", label: "Products", icon: IconBuildingStore },
     { link: "", label: "Vendors", icon: IconReceipt2 },
     { link: "", label: "Security", icon: IconFingerprint },
-    { link: "", label: "Deposit", icon: IconKey },
+    { link: "/deposits", label: "Deposits", icon: IconCarGarage },
     { link: "", label: "Clients", icon: IconDatabaseImport },
     { link: "", label: "Users", icon: Icon2fa },
     { link: "", label: "Other Settings", icon: IconSettings },
