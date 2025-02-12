@@ -1,4 +1,4 @@
-# **Yeah-Front**
+# **Dinoco**
 
 An inventory management system designed for stores selling appliances and home goods. This project helps manage inventory, track sales, generate invoices, and view statistics for critical metrics like best-selling products and stock levels. Built with modern web technologies for a responsive and user-friendly experience.
 
