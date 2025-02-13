@@ -6,6 +6,7 @@ import NotFound from "../pages/NotFound";
 import Products from "../pages/Products";
 import Deposits from "../pages/Deposits";
 import Clients from "../pages/Clients";
+import Users from "../pages/Users";
 
 export default function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ export default function AppRoutes() {
             <Route path="/products" element={<Products/>} />
             <Route path="/deposits" element={<Deposits/>} />
             <Route path="/clients" element={<Clients/>} />
+            <Route path="/users" element={<Users/>} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -10,13 +10,14 @@ import {
   IconMessage2,
   IconMessages,
   IconReceipt2,
+  IconUserPlus,
   IconReceiptRefund,
   IconSettings,
   IconShoppingCart,
   IconSwitchHorizontal,
   IconUsers,
   IconBuildingStore,
-  IconCarGarage
+  IconCarGarage,
 } from "@tabler/icons-react";
 import { SegmentedControl, Text } from "@mantine/core";
 import { Link } from "react-router-dom";
@@ -25,21 +26,20 @@ import classes from "./NavbarSegmented.module.css";
 const tabs = {
   account: [
     { link: "/products", label: "Products", icon: IconBuildingStore },
-    { link: "", label: "Vendors", icon: IconReceipt2 },
-    { link: "", label: "Security", icon: IconFingerprint },
+    { link: "/users", label: "Users", icon: IconUsers },
+    { link: "/clients", label: "Clients", icon: IconUserPlus },
     { link: "/deposits", label: "Deposits", icon: IconCarGarage },
-    { link: "/clients", label: "Clients", icon: IconDatabaseImport },
-    { link: "", label: "Users", icon: Icon2fa },
-    { link: "", label: "Other Settings", icon: IconSettings },
   ],
   general: [
     { link: "", label: "Orders", icon: IconShoppingCart },
     { link: "", label: "Receipts", icon: IconLicense },
     { link: "", label: "Reviews", icon: IconMessage2 },
     { link: "", label: "Messages", icon: IconMessages },
-    { link: "", label: "Customers", icon: IconUsers },
     { link: "", label: "Refunds", icon: IconReceiptRefund },
     { link: "", label: "Files", icon: IconFileAnalytics },
+    { link: "", label: "Security", icon: IconFingerprint },
+    { link: "", label: "2Fa", icon: Icon2fa },
+    { link: "", label: "Other Settings", icon: IconSettings },
   ],
 };
 
