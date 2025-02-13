@@ -27,14 +27,16 @@ export default function Deposits() {
             <Table.Tr>
               <Table.Th>ID</Table.Th>
               <Table.Th>Description</Table.Th>
+              <Table.Th>Location</Table.Th>
             </Table.Tr>
             </Table.Thead>
 
             <Table.Tbody>
-              {data?.map((deposit) => (
+              {data?.map((deposit, index) => (
                 <Table.Tr key={deposit.id}>
-                  <Table.Td>{deposit.id}</Table.Td>
+                  <Table.Td>{index+1}</Table.Td>
                   <Table.Td>{deposit.description}</Table.Td>
+                  <Table.Td>{deposit.location}</Table.Td>
                 </Table.Tr>
               ))}
             </Table.Tbody>

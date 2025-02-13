@@ -25,18 +25,26 @@ export default function Products() {
         <Table striped highlightOnHover withTableBorder>
           <Table.Thead>
             <Table.Tr>
+            <Table.Th>ID</Table.Th>
               <Table.Th>Name</Table.Th>
               <Table.Th>Price</Table.Th>
               <Table.Th>Quantity</Table.Th>
+              <Table.Th>Expire Date</Table.Th>
+              <Table.Th>Deposit</Table.Th>
+              <Table.Th>Sale Unit</Table.Th>
             </Table.Tr>
             </Table.Thead>
 
             <Table.Tbody>
-              {data?.map((product) => (
+              {data?.map((product, index) => (
                 <Table.Tr key={product.id}>
+                  <Table.Td>{index+1}</Table.Td>
                   <Table.Td>{product.name}</Table.Td>
                   <Table.Td>${product.price}</Table.Td>
                   <Table.Td>{product.quantity}</Table.Td>
+                  <Table.Td>{product.expire_date}</Table.Td>
+                  <Table.Td>{product.id_deposit}</Table.Td>
+                  <Table.Td>{product.sales_unit}</Table.Td>
                 </Table.Tr>
               ))}
             </Table.Tbody>
