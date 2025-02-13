@@ -20,6 +20,7 @@ import {
   IconBuildingStore,
   IconCarGarage,
   IconCheckupList,
+  IconUserDollar,
 } from "@tabler/icons-react";
 import { SegmentedControl, Text } from "@mantine/core";
 import { Link } from "react-router-dom";
@@ -33,6 +34,7 @@ const tabs = {
     { link: "/providers", label: "Providers", icon: IconCheckupList },
     { link: "/deposits", label: "Deposits", icon: IconCarGarage },
     { link: "/purchases", label: "Purchases", icon: IconCreditCardPay },
+    { link: "/sales", label: "Sales", icon: IconUserDollar },
   ],
   general: [
     { link: "", label: "Orders", icon: IconShoppingCart },
