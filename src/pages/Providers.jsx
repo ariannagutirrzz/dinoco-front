@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { getUsers } from "../api/users";
+import { getProviders } from "../api/providers";
 import { Title, Text, Stack, Table } from "@mantine/core";
 
-export default function Users() {
+export default function Providers() {
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["users"],
-    queryFn: getUsers,
+    queryKey: ["providers"],
+    queryFn: getProviders,
   });
 //   console.log(data);
 //   console.log(JSON.stringify(data, null, 2));
@@ -21,7 +21,7 @@ export default function Users() {
   return (
     <>
       <Stack align="center">
-        <Title order={1}>Users</Title>
+        <Title order={1}>Providers</Title>
         <Table striped highlightOnHover withTableBorder>
           <Table.Thead>
             <Table.Tr>
@@ -29,18 +29,18 @@ export default function Users() {
               <Table.Th>ID Document</Table.Th>
               <Table.Th>Name</Table.Th>
               <Table.Th>Phone Number</Table.Th>
-              <Table.Th>User Type</Table.Th>
+              <Table.Th>email</Table.Th>
             </Table.Tr>
             </Table.Thead>
 
             <Table.Tbody>
-              {data?.map((users, index) => (
-                <Table.Tr key={users.id}>
+              {data?.map((providers, index) => (
+                <Table.Tr key={providers.id}>
                   <Table.Td>{index+1}</Table.Td>
-                  <Table.Td>{users.id_document}</Table.Td>
-                  <Table.Td>{users.name}</Table.Td>
-                  <Table.Td>{users.phone_number}</Table.Td>
-                  <Table.Td>{users.user_type}</Table.Td>
+                  <Table.Td>{providers.id_document}</Table.Td>
+                  <Table.Td>{providers.name}</Table.Td>
+                  <Table.Td>{providers.phone_number}</Table.Td>
+                  <Table.Td>{providers.email}</Table.Td>
                 </Table.Tr>
               ))}
             </Table.Tbody>
