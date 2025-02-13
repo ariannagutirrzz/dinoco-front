@@ -72,7 +72,7 @@ export function NavbarSegmented() {
     <nav className={classes.navbar}>
       <div>
         <Text fw={500} size="sm" className={classes.title} c="dimmed" mb="xs">
-          ariannavega2022@gmail.com
+          Jose Oropeza
         </Text>
 
         <SegmentedControl
