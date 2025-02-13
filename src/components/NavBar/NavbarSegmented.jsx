@@ -28,7 +28,7 @@ const tabs = {
     { link: "", label: "Vendors", icon: IconReceipt2 },
     { link: "", label: "Security", icon: IconFingerprint },
     { link: "/deposits", label: "Deposits", icon: IconCarGarage },
-    { link: "", label: "Clients", icon: IconDatabaseImport },
+    { link: "/clients", label: "Clients", icon: IconDatabaseImport },
     { link: "", label: "Users", icon: Icon2fa },
     { link: "", label: "Other Settings", icon: IconSettings },
   ],
