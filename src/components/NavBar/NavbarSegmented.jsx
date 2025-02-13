@@ -4,6 +4,7 @@ import {
   IconDatabaseImport,
   IconFileAnalytics,
   IconFingerprint,
+  IconCreditCardPay,
   IconKey,
   IconLicense,
   IconLogout,
@@ -31,6 +32,7 @@ const tabs = {
     { link: "/clients", label: "Clients", icon: IconUserPlus },
     { link: "/providers", label: "Providers", icon: IconCheckupList },
     { link: "/deposits", label: "Deposits", icon: IconCarGarage },
+    { link: "/purchases", label: "Purchases", icon: IconCreditCardPay },
   ],
   general: [
     { link: "", label: "Orders", icon: IconShoppingCart },

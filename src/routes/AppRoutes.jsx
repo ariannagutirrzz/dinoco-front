@@ -8,6 +8,7 @@ import Deposits from "../pages/Deposits";
 import Clients from "../pages/Clients";
 import Users from "../pages/Users";
 import Providers from "../pages/Providers";
+import Purchases from "../pages/Purchases";
 
 export default function AppRoutes() {
   return (
@@ -21,6 +22,7 @@ export default function AppRoutes() {
             <Route path="/clients" element={<Clients/>} />
             <Route path="/users" element={<Users/>} />
             <Route path="/providers" element={<Providers/>} />
+            <Route path="/purchases" element={<Purchases/>} />
         </Route>
       </Routes>
     </BrowserRouter>
