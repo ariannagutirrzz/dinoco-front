@@ -4,19 +4,23 @@ import {
   IconDatabaseImport,
   IconFileAnalytics,
   IconFingerprint,
+  IconCreditCardPay,
   IconKey,
   IconLicense,
   IconLogout,
   IconMessage2,
   IconMessages,
   IconReceipt2,
+  IconUserPlus,
   IconReceiptRefund,
   IconSettings,
   IconShoppingCart,
   IconSwitchHorizontal,
   IconUsers,
   IconBuildingStore,
-  IconCarGarage
+  IconCarGarage,
+  IconCheckupList,
+  IconUserDollar,
 } from "@tabler/icons-react";
 import { SegmentedControl, Text } from "@mantine/core";
 import { Link } from "react-router-dom";
@@ -25,21 +29,23 @@ import classes from "./NavbarSegmented.module.css";
 const tabs = {
   account: [
     { link: "/products", label: "Products", icon: IconBuildingStore },
-    { link: "", label: "Vendors", icon: IconReceipt2 },
-    { link: "", label: "Security", icon: IconFingerprint },
+    { link: "/users", label: "Users", icon: IconUsers },
+    { link: "/clients", label: "Clients", icon: IconUserPlus },
+    { link: "/providers", label: "Providers", icon: IconCheckupList },
     { link: "/deposits", label: "Deposits", icon: IconCarGarage },
-    { link: "", label: "Clients", icon: IconDatabaseImport },
-    { link: "", label: "Users", icon: Icon2fa },
-    { link: "", label: "Other Settings", icon: IconSettings },
+    { link: "/purchases", label: "Purchases", icon: IconCreditCardPay },
+    { link: "/sales", label: "Sales", icon: IconUserDollar },
   ],
   general: [
     { link: "", label: "Orders", icon: IconShoppingCart },
     { link: "", label: "Receipts", icon: IconLicense },
     { link: "", label: "Reviews", icon: IconMessage2 },
     { link: "", label: "Messages", icon: IconMessages },
-    { link: "", label: "Customers", icon: IconUsers },
     { link: "", label: "Refunds", icon: IconReceiptRefund },
     { link: "", label: "Files", icon: IconFileAnalytics },
+    { link: "", label: "Security", icon: IconFingerprint },
+    { link: "", label: "2Fa", icon: Icon2fa },
+    { link: "", label: "Other Settings", icon: IconSettings },
   ],
 };
 
@@ -66,7 +72,7 @@ export function NavbarSegmented() {
     <nav className={classes.navbar}>
       <div>
         <Text fw={500} size="sm" className={classes.title} c="dimmed" mb="xs">
-          ariannavega2022@gmail.com
+          Jose Oropeza
         </Text>
 
         <SegmentedControl
