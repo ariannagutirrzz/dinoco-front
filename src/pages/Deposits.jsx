@@ -53,23 +53,12 @@ export default function Deposits() {
             ))}
           </Table.Tbody>
         </Table>
-        {totalPages > 1 && (
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              position: "absolute",
-              bottom: "10px", // Moves pagination up slightly
-            }}
-          >
-            <Pagination
-              total={totalPages}
-              page={currentPage}
-              onChange={setCurrentPage}
-            />
-          </div>
-        )}
+
+        <Pagination
+          total={totalPages}
+          page={currentPage}
+          onChange={setCurrentPage}
+        />
       </Stack>
     </>
   );
