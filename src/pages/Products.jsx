@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getProducts } from "../api/products";
-import { Title, Text, Stack, Table, Pagination } from "@mantine/core";
+import { Title, Text, Stack, Table, Pagination, Box } from "@mantine/core";
 
 export default function Products() {
   const { data, isLoading, isError, error } = useQuery({
@@ -28,64 +28,44 @@ export default function Products() {
   );
 
   return (
-    <Stack
-      align="center"
-      style={{
-        width: "100%",
-        height: "95vh", // Forces it to fit exactly in viewport
-        display: "flex",
-        flexDirection: "column",
-        overflow: "hidden", // Prevents scrolling
-        position: "relative", // Needed for absolute positioning of pagination
-      }}
-    >
+    <Stack align="center" overflow="hidden" pos="relative">
       <Title order={1}>Products</Title>
+      <Table striped highlightOnHover withTableBorder>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>ID</Table.Th>
+            <Table.Th>Name</Table.Th>
+            <Table.Th>Price</Table.Th>
+            <Table.Th>Quantity</Table.Th>
+            <Table.Th>Expire Date</Table.Th>
+            <Table.Th>Deposit</Table.Th>
+            <Table.Th>Sale Unit</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
 
-      {/* Table container fills available space */}
-      <div style={{ flexGrow: 1, width: "100%", display: "flex", flexDirection: "column" }}>
-        <Table striped highlightOnHover withTableBorder>
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th>ID</Table.Th>
-              <Table.Th>Name</Table.Th>
-              <Table.Th>Price</Table.Th>
-              <Table.Th>Quantity</Table.Th>
-              <Table.Th>Expire Date</Table.Th>
-              <Table.Th>Deposit</Table.Th>
-              <Table.Th>Sale Unit</Table.Th>
+        <Table.Tbody>
+          {paginatedData?.map((product, index) => (
+            <Table.Tr key={product.id}>
+              <Table.Td>
+                {(currentPage - 1) * itemsPerPage + index + 1}
+              </Table.Td>
+              <Table.Td>{product.name}</Table.Td>
+              <Table.Td>${product.price}</Table.Td>
+              <Table.Td>{product.quantity}</Table.Td>
+              <Table.Td>{product.expire_date}</Table.Td>
+              <Table.Td>{product.id_deposit}</Table.Td>
+              <Table.Td>{product.sales_unit}</Table.Td>
             </Table.Tr>
-          </Table.Thead>
-
-          <Table.Tbody>
-            {paginatedData?.map((product, index) => (
-              <Table.Tr key={product.id}>
-                <Table.Td>{(currentPage - 1) * itemsPerPage + index + 1}</Table.Td>
-                <Table.Td>{product.name}</Table.Td>
-                <Table.Td>${product.price}</Table.Td>
-                <Table.Td>{product.quantity}</Table.Td>
-                <Table.Td>{product.expire_date}</Table.Td>
-                <Table.Td>{product.id_deposit}</Table.Td>
-                <Table.Td>{product.sales_unit}</Table.Td>
-              </Table.Tr>
-            ))}
-          </Table.Tbody>
-        </Table>
-      </div>
-
-      {/* Fixed Pagination at the bottom */}
-      {totalPages > 1 && (
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            position: "absolute",
-            bottom: "10px", // Moves pagination up slightly
-          }}
-        >
-          <Pagination total={totalPages} page={currentPage} onChange={setCurrentPage} />
-        </div>
-      )}
+          ))}
+        </Table.Tbody>
+      </Table>
+      <Box>
+        <Pagination
+          total={totalPages}
+          page={currentPage}
+          onChange={setCurrentPage}
+        />
+      </Box>
     </Stack>
   );
 }
