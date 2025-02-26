@@ -1,26 +1,41 @@
-import { useQuery } from "@tanstack/react-query";
+import {
+  Title,
+  Text,
+  Stack,
+  Table,
+  Pagination,
+  Box,
+  Button,
+} from "@mantine/core";
+import { useProducts } from "../hooks/useProducts";
 import { useState } from "react";
-import { getProducts } from "../api/products";
-import { Title, Text, Stack, Table, Pagination, Box } from "@mantine/core";
+import { useDeleteModal } from "../hooks/useDeleteModal";
+import { ConfirmationModal } from "../components/Modals/ConfirmationModal";
 
 export default function Products() {
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["products"],
-    queryFn: getProducts,
-  });
-
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 15;
 
-  if (isLoading) {
+  const {
+    data,
+    isFetching,
+    isErrorFetch,
+    fetchError,
+    deleteProduct,
+    isDeleting,
+  } = useProducts();
+
+  const { deletingId, opened, close, handleDelete, confirmDelete } =
+    useDeleteModal();
+
+  if (isFetching) {
     return <Text>Loading...</Text>;
   }
 
-  if (isError) {
-    return <Text>{error.message}</Text>;
+  if (isErrorFetch) {
+    return <Text>{fetchError.message}</Text>;
   }
 
-  // Ensure data exists before slicing
   const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
   const paginatedData = data?.slice(
     (currentPage - 1) * itemsPerPage,
@@ -40,6 +55,7 @@ export default function Products() {
             <Table.Th>Expire Date</Table.Th>
             <Table.Th>Deposit</Table.Th>
             <Table.Th>Sale Unit</Table.Th>
+            <Table.Th>Actions</Table.Th>
           </Table.Tr>
         </Table.Thead>
 
@@ -55,6 +71,15 @@ export default function Products() {
               <Table.Td>{product.expire_date}</Table.Td>
               <Table.Td>{product.id_deposit}</Table.Td>
               <Table.Td>{product.sales_unit}</Table.Td>
+              <Table.Td>
+                <Button
+                  color="red"
+                  onClick={() => handleDelete(product.id)}
+                  loading={deletingId === product.id && isDeleting}
+                >
+                  Delete
+                </Button>
+              </Table.Td>
             </Table.Tr>
           ))}
         </Table.Tbody>
@@ -66,6 +91,19 @@ export default function Products() {
           onChange={setCurrentPage}
         />
       </Box>
+
+      <ConfirmationModal
+        opened={opened}
+        onClose={close}
+        title="Confirm Deletion"
+        message="Are you sure you want to delete this product?"
+        onConfirm={() => confirmDelete(deleteProduct)}
+        confirmLabel="Delete"
+        cancelLabel="Cancel"
+        confirmColor="red"
+        cancelColor="gray"
+        size="md"
+      />
     </Stack>
   );
 }
