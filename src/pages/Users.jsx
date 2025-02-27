@@ -29,7 +29,6 @@ export default function Users() {
               <Table.Th>ID Document</Table.Th>
               <Table.Th>Name</Table.Th>
               <Table.Th>Phone Number</Table.Th>
-              <Table.Th>User Type</Table.Th>
             </Table.Tr>
             </Table.Thead>
 
@@ -40,7 +39,6 @@ export default function Users() {
                   <Table.Td>{users.id_document}</Table.Td>
                   <Table.Td>{users.name}</Table.Td>
                   <Table.Td>{users.phone_number}</Table.Td>
-                  <Table.Td>{users.user_type}</Table.Td>
                 </Table.Tr>
               ))}
             </Table.Tbody>
