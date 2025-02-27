@@ -4,30 +4,31 @@ import { ClientTooltip, TooltipContent, TooltipTrigger } from "./ClientTooltip";
 import { useProducts } from "../../hooks/useProducts";
 
 
-
-// Sample data
 const data = [
-  { key: "France", value: 38.1 },
-  { key: "Spain", value: 25.3 },
-  { key: "Italy", value: 23.1 },
-  { key: "Portugal", value: 19.5 },
-  { key: "Germany", value: 14.7 },
-  { key: "Netherlands", value: 6.1 },
-  { key: "Belgium", value: 10.8 },
-  { key: "Austria", value: 7.8 },
-  { key: "Greece", value: 6.8 },
-  { key: "Luxembourg", value: 5.5 },
-  { key: "Cyprus", value: 4.8 },
-  { key: "Malta", value: 3.5 },
-  { key: "Slovenia", value: 3.8 },
-  { key: "Estonia", value: 8.8 },
-  { key: "Latvia", value: 15.8 },
-  { key: "Lithuania", value: 12.8 },
-  { key: "Croatia", value: 5.8 },
-  
+  { key: "Luz led c6 9006", value: 10 },
+  { key: "lupitas h4", value: 20 },
+  { key: "Tercer stop", value: 30 },
+  { key: "Led Auxiliar 18w", value: 40 },
+ 
 ].sort((a, b) => b.value - a.value);
 
 export function BarChartThinHorizontal() {
+
+
+  //  We have to create a specific query from supabase to get the data we need for the chart - exmaple: the most saled products, then we will create a custom hook and utilize it here
+
+  //   const {
+  //       data: products,
+  //     } = useProducts();
+  //   console.log(products);
+  //   const data = (products || [])
+  // .map((product) => ({
+  //   key: product.name,
+  //   value: product.products ? product.products.length : 0,
+  // }))
+  // .sort((a, b) => b.value - a.value);
+
+
   // Scales
   const yScale = scaleBand()
     .domain(data.map((d) => d.key))
@@ -85,6 +86,7 @@ export function BarChartThinHorizontal() {
                     width: "100%",
                     height: `calc(${barHeight}% + 8px)`,
                     transform: "translateY(-4px)",
+                    borderRadius: "0 6px 6px 0",
                   }}
                   className={`${hoverColor} hover:bg-gray-200/50 relative z-10`}
                 />
@@ -101,17 +103,21 @@ export function BarChartThinHorizontal() {
         {data.map((d, index) => {
           const barWidth = xScale(d.value);
           const barHeight = yScale.bandwidth();
+          const colorMap = {
+            pink: "#f472b6",
+            purple: "#a78bfa",
+            indigo: "#818cf8",
+            sky: "#38bdf8",
+          };
+        
           const barColor =
-            barWidth > 50
-              ? "bg-pink-300 dark:bg-pink-500"
-              : barWidth > 25
-              ? "bg-purple-300 dark:bg-purple-500"
-              : barWidth > 10
-              ? "bg-indigo-300 dark:bg-indigo-500"
-              : "bg-sky-300 dark:bg-sky-500";
+            barWidth > 50 ? colorMap.pink
+            : barWidth > 25 ? colorMap.purple
+            : barWidth > 10 ? colorMap.indigo
+            : colorMap.sky;
           return (
             <React.Fragment key={index}>
-              <div
+               <svg
                 style={{
                   position: "absolute",
                   left: "0",
@@ -119,25 +125,23 @@ export function BarChartThinHorizontal() {
                   width: `${barWidth}%`,
                   height: `${barHeight}%`,
                 }}
-                className={barColor}
-              />
-              {/* Tip of the bar */}
-              <div
-                style={{
-                  position: "absolute",
-                  left: `${barWidth}%`,
-                  top: `${yScale(d.key) + barHeight / 2}%`,
-                  transform: "translate(-100%, -50%)",
-                  width: "9px",
-                  height: "9px",
-                  borderRadius: "2px",
-                }}
-                className={barColor}
-              />
+              >
+                <rect
+                  x="0"
+                  y="0"
+                  width="100%"
+                  height="100%"
+                  rx="8"
+                  ry="8"
+                  fill={
+                    barColor
+                  }
+                />
+              </svg>
             </React.Fragment>
-          );
-        })}
-      </div>
+              );
+            })}
+          </div>
 
       {/* Y Axis (Letters) */}
       <div
@@ -160,15 +164,6 @@ export function BarChartThinHorizontal() {
           </span>
         ))}
       </div>
-    </div>
-  );
-}
-
-export default function Charts() {
-  return (
-    <div>
-      <h1>Charts</h1>
-      <BarChartThinHorizontal />
     </div>
   );
 }
