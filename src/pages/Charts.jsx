@@ -1,10 +1,13 @@
-import { BarChartThinHorizontal } from '../components/Charts/BarChartThinHorizontal';
+import { BarChartHorizontal } from "../components/Charts/BarChartHorizontal";
 
 export default function Charts() {
-    return (
-      <div>
-        <h1>Charts</h1>
-        <BarChartThinHorizontal />
+  return (
+    <div>
+      <h1 className="font-bold">Charts</h1>
+
+      <div className="mt-8">
+        <BarChartHorizontal />
       </div>
-    );
-  }
+    </div>
+  );
+}
