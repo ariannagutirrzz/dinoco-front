@@ -1,16 +1,13 @@
 import { useState } from "react";
 import {
   Icon2fa,
-  IconDatabaseImport,
   IconFileAnalytics,
   IconFingerprint,
   IconCreditCardPay,
-  IconKey,
   IconLicense,
   IconLogout,
   IconMessage2,
   IconMessages,
-  IconReceipt2,
   IconUserPlus,
   IconReceiptRefund,
   IconSettings,
@@ -21,6 +18,7 @@ import {
   IconCarGarage,
   IconCheckupList,
   IconUserDollar,
+  IconGraph
 } from "@tabler/icons-react";
 import { SegmentedControl, Text } from "@mantine/core";
 import { Link } from "react-router-dom";
@@ -37,14 +35,14 @@ const tabs = {
     { link: "/sales", label: "Sales", icon: IconUserDollar },
   ],
   general: [
-    { link: "", label: "Orders", icon: IconShoppingCart },
+    { link: "/charts", label: "Charts", icon: IconGraph },
     { link: "", label: "Receipts", icon: IconLicense },
-    { link: "", label: "Reviews", icon: IconMessage2 },
-    { link: "", label: "Messages", icon: IconMessages },
+    // { link: "", label: "Reviews", icon: IconMessage2 },
+    // { link: "", label: "Messages", icon: IconMessages },
     { link: "", label: "Refunds", icon: IconReceiptRefund },
-    { link: "", label: "Files", icon: IconFileAnalytics },
+    // { link: "", label: "Files", icon: IconFileAnalytics },
     { link: "", label: "Security", icon: IconFingerprint },
-    { link: "", label: "2Fa", icon: Icon2fa },
+    // { link: "", label: "2Fa", icon: Icon2fa },
     { link: "", label: "Other Settings", icon: IconSettings },
   ],
 };

@@ -1,5 +1,6 @@
 import { Title, Text, Button, Stack } from "@mantine/core";
 import { notify } from "../utils/Notifications/Notifications";
+import { BarChartThinHorizontal } from '../components/Charts/BarChartThinHorizontal';
 
 export default function Home() {
 
@@ -14,6 +15,7 @@ export default function Home() {
         <Text>Welcome to the Home page. </Text>
         <Text>This is an Inventory System.</Text>
         <Button onClick={message}>Click me</Button>
+        <BarChartThinHorizontal />
       </Stack>
     </>
   );
