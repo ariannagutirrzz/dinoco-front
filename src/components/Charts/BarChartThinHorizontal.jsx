@@ -9,6 +9,8 @@ const data = [
   { key: "lupitas h4", value: 20 },
   { key: "Tercer stop", value: 30 },
   { key: "Led Auxiliar 18w", value: 40 },
+  { key: "Luz led c6 90", value: 80 },
+  { key: "lupitas h2", value: 14 },
  
 ].sort((a, b) => b.value - a.value);
 
@@ -68,11 +70,11 @@ export function BarChartThinHorizontal() {
           const barHeight = yScale.bandwidth();
           const hoverColor =
             barWidth > 50
-              ? "hover:bg-pink-200/40"
-              : barWidth > 25
-              ? "hover:bg-purple-200/40"
-              : barWidth > 10
-              ? "hover:bg-indigo-200/40"
+            ? "hover:bg-pink-200/40"
+            : barWidth > 25
+            ? "hover:bg-purple-200/40"
+            : barWidth > 10
+            ? "hover:bg-indigo-200/40"
               : "hover:bg-sky-200/40";
           return (
             <ClientTooltip key={index}>
@@ -86,9 +88,8 @@ export function BarChartThinHorizontal() {
                     width: "100%",
                     height: `calc(${barHeight}% + 8px)`,
                     transform: "translateY(-4px)",
-                    borderRadius: "0 6px 6px 0",
                   }}
-                  className={`${hoverColor} hover:bg-gray-200/50 relative z-10`}
+                  className={`${hoverColor} rounded-md hover:bg-gray-200/50 relative z-10`}
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -104,16 +105,16 @@ export function BarChartThinHorizontal() {
           const barWidth = xScale(d.value);
           const barHeight = yScale.bandwidth();
           const colorMap = {
-            pink: "#f472b6",
-            purple: "#a78bfa",
-            indigo: "#818cf8",
-            sky: "#38bdf8",
+            top: "#0098da",
+            mid: "#3698ff",
+            bottom: "#36c2ff",
+            sky: "#0271d8",
           };
-        
+
           const barColor =
-            barWidth > 50 ? colorMap.pink
-            : barWidth > 25 ? colorMap.purple
-            : barWidth > 10 ? colorMap.indigo
+            barWidth > 50 ? colorMap.top
+            : barWidth > 25 ? colorMap.bottom
+            : barWidth > 10 ? colorMap.bottom
             : colorMap.sky;
           return (
             <React.Fragment key={index}>
@@ -158,7 +159,7 @@ export function BarChartThinHorizontal() {
               left: "0",
               top: `${yScale(entry.key) + yScale.bandwidth() / 2}%`,
             }}
-            className="absolute text-xs text-gray-400 -translate-y-1/2 w-full text-right pr-2"
+            className="absolute text-xs text-black -translate-y-1/2 w-full text-right pr-2"
           >
             {entry.key}
           </span>

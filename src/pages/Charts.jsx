@@ -3,7 +3,7 @@ import { BarChartThinHorizontal } from '../components/Charts/BarChartThinHorizon
 export default function Charts() {
     return (
       <div>
-        <h1>Charts</h1>
+        <h1 className='font-bold'>Charts</h1>
         <BarChartThinHorizontal />
       </div>
     );

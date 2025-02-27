@@ -27,7 +27,6 @@ import classes from "./NavbarSegmented.module.css";
 const tabs = {
   account: [
     { link: "/products", label: "Products", icon: IconBuildingStore },
-    { link: "/users", label: "Users", icon: IconUsers },
     { link: "/clients", label: "Clients", icon: IconUserPlus },
     { link: "/providers", label: "Providers", icon: IconCheckupList },
     { link: "/deposits", label: "Deposits", icon: IconCarGarage },
@@ -44,6 +43,7 @@ const tabs = {
     { link: "", label: "Security", icon: IconFingerprint },
     // { link: "", label: "2Fa", icon: Icon2fa },
     { link: "", label: "Other Settings", icon: IconSettings },
+    { link: "/users", label: "Users", icon: IconUsers }
   ],
 };
 
