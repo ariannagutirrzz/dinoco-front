@@ -10,6 +10,7 @@ import Users from "../pages/Users";
 import Providers from "../pages/Providers";
 import Purchases from "../pages/Purchases";
 import Sales from "../pages/Sales";
+import Charts from "../pages/Charts";
 
 export default function AppRoutes() {
   return (
@@ -25,6 +26,7 @@ export default function AppRoutes() {
             <Route path="/providers" element={<Providers/>} />
             <Route path="/purchases" element={<Purchases/>} />
             <Route path="/sales" element={<Sales/>} />
+            <Route path="/charts" element={<Charts/>} />
         </Route>
       </Routes>
     </BrowserRouter>

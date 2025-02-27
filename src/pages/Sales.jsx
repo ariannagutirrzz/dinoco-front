@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { getSales } from "../api/sales";
-import { Title, Text, Stack, Table } from "@mantine/core";
+import { Title, Text, Stack, Table, Pagination, Box } from "@mantine/core";
 
 export default function Sales() {
   const { data, isLoading, isError, error } = useQuery({
@@ -9,6 +10,8 @@ export default function Sales() {
   });
 //   console.log(data);
 //   console.log(JSON.stringify(data, null, 2));
+const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 15;
 
   if (isLoading) {
     return <Text>Loading...</Text>;
@@ -17,6 +20,13 @@ export default function Sales() {
   if (isError) {
     return <Text>{error.message}</Text>;
   }
+
+  // Ensure data exists before slicing
+  const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
+  const paginatedData = data?.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <>
@@ -36,7 +46,7 @@ export default function Sales() {
             </Table.Thead>
 
             <Table.Tbody>
-              {data?.map((sales, index) => (
+              {paginatedData?.map((sales, index) => (
                 <Table.Tr key={sales.id}>
                   <Table.Td>{index+1}</Table.Td>
                   <Table.Td>{sales.id_client}</Table.Td>
@@ -49,6 +59,13 @@ export default function Sales() {
               ))}
             </Table.Tbody>
         </Table>
+        <Box>
+        <Pagination
+          total={totalPages}
+          page={currentPage}
+          onChange={setCurrentPage}
+        />
+      </Box>
       </Stack>
     </>
   );
