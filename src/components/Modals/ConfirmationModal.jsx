@@ -45,11 +45,3 @@ ConfirmationModal.propTypes = {
   size: PropTypes.oneOf(["xs", "sm", "xl", "lg", "xl"]),
 };
 
-// Default props
-ConfirmationModal.defaultProps = {
-  confirmLabel: "Delete",
-  cancelLabel: "Cancel",
-  confirmColor: "red",
-  cancelColor: "gray",
-  size: "xl",
-};

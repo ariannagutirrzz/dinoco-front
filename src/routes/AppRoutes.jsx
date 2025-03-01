@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
+import ProtectedRoute from "./ProtectedRoute";
 
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
@@ -11,22 +12,27 @@ import Providers from "../pages/Providers";
 import Purchases from "../pages/Purchases";
 import Sales from "../pages/Sales";
 import Charts from "../pages/Charts";
+import Auth from "../pages/Auth";
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<MainLayout/>}>
-            <Route path="/" element={<Home/>}/>
-            <Route path="*" element={<NotFound/>} />
-            <Route path="/products" element={<Products/>} />
-            <Route path="/deposits" element={<Deposits/>} />
-            <Route path="/clients" element={<Clients/>} />
-            <Route path="/users" element={<Users/>} />
-            <Route path="/providers" element={<Providers/>} />
-            <Route path="/purchases" element={<Purchases/>} />
-            <Route path="/sales" element={<Sales/>} />
-            <Route path="/charts" element={<Charts/>} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="*" element={<NotFound />} />
+
+        <Route element={<ProtectedRoute />}>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/deposits" element={<Deposits />} />
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/providers" element={<Providers />} />
+            <Route path="/purchases" element={<Purchases />} />
+            <Route path="/sales" element={<Sales />} />
+            <Route path="/charts" element={<Charts />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
