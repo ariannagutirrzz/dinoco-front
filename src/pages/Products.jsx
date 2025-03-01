@@ -6,11 +6,13 @@ import {
   Pagination,
   Box,
   Button,
+  Group,
 } from "@mantine/core";
 import { useProducts } from "../hooks/useProducts";
 import { useState } from "react";
 import { useDeleteModal } from "../hooks/useDeleteModal";
 import { ConfirmationModal } from "../components/Modals/ConfirmationModal";
+import { IconBuildingStore } from "@tabler/icons-react";
 
 export default function Products() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -44,7 +46,10 @@ export default function Products() {
 
   return (
     <Stack align="center" overflow="hidden" pos="relative">
-      <Title order={1}>Products</Title>
+      <Group justify="center" align="center">
+        <Title order={1}>Products</Title> 
+        <IconBuildingStore />
+      </Group>
       <Table striped highlightOnHover withTableBorder>
         <Table.Thead>
           <Table.Tr>

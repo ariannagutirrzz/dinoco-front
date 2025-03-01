@@ -3,7 +3,7 @@ import { ClientTooltip, TooltipContent, TooltipTrigger } from "./ClientTooltip";
 import { useProducts } from "../../hooks/useProducts";
 
 const data = [
-  { key: "Technology", value: 76},
+  { key: "Technology", value: 40},
   { key: "Financials", value: 25.3 },
   { key: "Energy", value: 23.1 },
   { key: "Cyclical", value: 19.5 },
@@ -84,7 +84,7 @@ export function BarChartHorizontal() {
                     height: `${barHeight}%`,
                     borderRadius: "0 4px 4px 0",
                   }}
-                  className="absolute bg-purple-300 dark:bg-purple-400"
+                  className="absolute bg-[#0098da]"
                 />
               </TooltipTrigger>
               <TooltipContent>

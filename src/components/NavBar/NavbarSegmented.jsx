@@ -26,6 +26,8 @@ import classes from "./NavbarSegmented.module.css";
 
 const tabs = {
   account: [
+    { link: "/charts", label: "Charts", icon: IconGraph },
+
     { link: "/products", label: "Products", icon: IconBuildingStore },
     { link: "/clients", label: "Clients", icon: IconUserPlus },
     { link: "/providers", label: "Providers", icon: IconCheckupList },
@@ -34,7 +36,6 @@ const tabs = {
     { link: "/sales", label: "Sales", icon: IconUserDollar },
   ],
   general: [
-    { link: "/charts", label: "Charts", icon: IconGraph },
     { link: "", label: "Receipts", icon: IconLicense },
     // { link: "", label: "Reviews", icon: IconMessage2 },
     // { link: "", label: "Messages", icon: IconMessages },
@@ -79,8 +80,8 @@ export function NavbarSegmented() {
           transitionTimingFunction="ease"
           fullWidth
           data={[
-            { label: "Account", value: "account" },
-            { label: "System", value: "general" },
+            { label: "System", value: "account" },
+            { label: "Account", value: "general" },
           ]}
         />
       </div>
