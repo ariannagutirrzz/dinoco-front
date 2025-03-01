@@ -27,7 +27,7 @@ Follow these steps to set up and run the project locally:
 
 2. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/yeah-front.git
+   git clone https://github.com/your-username/dinoco-front.git
    cd yeah-front
    ```
 ### **Installation**:  
