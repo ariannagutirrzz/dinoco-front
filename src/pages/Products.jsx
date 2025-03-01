@@ -48,7 +48,7 @@ export default function Products() {
     <Stack align="center" overflow="hidden" pos="relative">
       <Group justify="center" align="center">
         <Title order={1}>Products</Title> 
-        <IconBuildingStore />
+        <IconBuildingStore size="32px"/>
       </Group>
       <Table striped highlightOnHover withTableBorder>
         <Table.Thead>
