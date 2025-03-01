@@ -16,6 +16,7 @@ export default function Charts() {
           border: "2px solid #e5e7eb",
           borderRadius: "10px",
           padding: "1rem",
+          marginTop: "1rem",
         }}
       >
         <div style={{ borderRight: "2px solid #e5e7eb", paddingRight: "1rem" }}>
