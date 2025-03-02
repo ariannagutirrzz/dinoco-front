@@ -8,8 +8,8 @@ export default function Clients() {
     queryKey: ["clients"],
     queryFn: getClients,
   });
-    console.log(data);
-    console.log(JSON.stringify(data, null, 2));
+    // console.log(data);
+    // console.log(JSON.stringify(data, null, 2));
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 15;

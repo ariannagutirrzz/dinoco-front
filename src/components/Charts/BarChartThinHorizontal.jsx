@@ -5,11 +5,29 @@ import { useProducts } from "../../hooks/useProducts";
 
 
 const data = [
+<<<<<<< HEAD:src/components/Charts/BarChartHorizontal.jsx
+  { key: "Technology", value: 40},
+  { key: "Financials", value: 25.3 },
+  { key: "Energy", value: 23.1 },
+  { key: "Cyclical", value: 19.5 },
+  { key: "Defensive", value: 14.7 },
+  { key: "Utilities", value: 5.8 },
+  { key: "Healthcare", value: 5.3 },
+  { key: "Industrials", value: 4.7 },
+  { key: "Materials", value: 4.4 },
+  { key: "Industrial Goods", value: 1.1 },
+  { key: "Energy Sector", value: 1.0 },
+  { key: "Technology Sector", value: 0.9 },
+  { key: "Healthcare Sector", value: 0.8 },
+  { key: "Consumer Goods", value: 0.7 },
+  { key: "Financial Sector", value: 0.6 },
+=======
   { key: "Luz led c6 9006", value: 10 },
   { key: "lupitas h4", value: 20 },
   { key: "Tercer stop", value: 30 },
   { key: "Led Auxiliar 18w", value: 40 },
  
+>>>>>>> main:src/components/Charts/BarChartThinHorizontal.jsx
 ].sort((a, b) => b.value - a.value);
 
 export function BarChartThinHorizontal() {
@@ -88,7 +106,11 @@ export function BarChartThinHorizontal() {
                     transform: "translateY(-4px)",
                     borderRadius: "0 6px 6px 0",
                   }}
+<<<<<<< HEAD:src/components/Charts/BarChartHorizontal.jsx
+                  className="absolute bg-[#0098da]"
+=======
                   className={`${hoverColor} hover:bg-gray-200/50 relative z-10`}
+>>>>>>> main:src/components/Charts/BarChartThinHorizontal.jsx
                 />
               </TooltipTrigger>
               <TooltipContent>
