@@ -3,9 +3,7 @@ import { scaleBand, scaleLinear, max } from "d3";
 import { ClientTooltip, TooltipContent, TooltipTrigger } from "./ClientTooltip"; // Ensure this path is correct
 import { useProducts } from "../../hooks/useProducts";
 
-
 const data = [
-<<<<<<< HEAD:src/components/Charts/BarChartHorizontal.jsx
   { key: "Technology", value: 40},
   { key: "Financials", value: 25.3 },
   { key: "Energy", value: 23.1 },
@@ -21,17 +19,9 @@ const data = [
   { key: "Healthcare Sector", value: 0.8 },
   { key: "Consumer Goods", value: 0.7 },
   { key: "Financial Sector", value: 0.6 },
-=======
-  { key: "Luz led c6 9006", value: 10 },
-  { key: "lupitas h4", value: 20 },
-  { key: "Tercer stop", value: 30 },
-  { key: "Led Auxiliar 18w", value: 40 },
- 
->>>>>>> main:src/components/Charts/BarChartThinHorizontal.jsx
 ].sort((a, b) => b.value - a.value);
 
-export function BarChartThinHorizontal() {
-
+export default function BarChartHorizontal() {
 
   //  We have to create a specific query from supabase to get the data we need for the chart - exmaple: the most saled products, then we will create a custom hook and utilize it here
 
@@ -106,11 +96,7 @@ export function BarChartThinHorizontal() {
                     transform: "translateY(-4px)",
                     borderRadius: "0 6px 6px 0",
                   }}
-<<<<<<< HEAD:src/components/Charts/BarChartHorizontal.jsx
                   className="absolute bg-[#0098da]"
-=======
-                  className={`${hoverColor} hover:bg-gray-200/50 relative z-10`}
->>>>>>> main:src/components/Charts/BarChartThinHorizontal.jsx
                 />
               </TooltipTrigger>
               <TooltipContent>

@@ -38,10 +38,7 @@ const tabs = {
     { link: "", label: "Refunds", icon: IconReceiptRefund },
     { link: "", label: "Security", icon: IconFingerprint },
     { link: "", label: "Other Settings", icon: IconSettings },
-<<<<<<< HEAD
     { link: "/users", label: "Users", icon: IconUsers },
-=======
->>>>>>> main
   ],
 };
 

@@ -1,6 +1,6 @@
-import { BarChartHorizontal } from "../components/Charts/BarChartHorizontal";
 import { PieChartLabels } from "../components/Charts/PieChartLabels";
 import { Group, Title } from "@mantine/core";
+import BarChartHorizontal from "../components/Charts/BarChartHorizontal";
 
 export default function Charts() {
   return (
