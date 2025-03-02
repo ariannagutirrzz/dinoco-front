@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
-  Icon2fa,
-  IconFileAnalytics,
   IconFingerprint,
   IconCreditCardPay,
   IconLicense,
