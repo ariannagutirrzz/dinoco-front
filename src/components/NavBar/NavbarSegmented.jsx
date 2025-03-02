@@ -26,6 +26,7 @@ const tabs = {
   account: [
     { link: "/charts", label: "Charts", icon: IconGraph },
     { link: "/products", label: "Products", icon: IconBuildingStore },
+    { link: "/users", label: "Users", icon: IconUsers },
     { link: "/clients", label: "Clients", icon: IconUserPlus },
     { link: "/providers", label: "Providers", icon: IconCheckupList },
     { link: "/deposits", label: "Deposits", icon: IconCarGarage },
@@ -37,7 +38,10 @@ const tabs = {
     { link: "", label: "Refunds", icon: IconReceiptRefund },
     { link: "", label: "Security", icon: IconFingerprint },
     { link: "", label: "Other Settings", icon: IconSettings },
+<<<<<<< HEAD
     { link: "/users", label: "Users", icon: IconUsers },
+=======
+>>>>>>> main
   ],
 };
 
