@@ -10,13 +10,3 @@ export const getProviders = async () => {
     return [];
   }
 };
-
-export const deleteProviders = async (id) => {
-  try {
-    const response = await apiClient.delete(`/providers/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error("Error deleting provider:", error);
-    return null;
-  }
-};

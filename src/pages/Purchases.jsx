@@ -1,100 +1,70 @@
-import { usePurchases } from "../hooks/usePurchases"; // Changed to usePurchases
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { useDeleteModal } from "../hooks/useDeleteModal";
-import { ConfirmationModal } from "../components/Modals/ConfirmationModal";
-import { Title, Text, Stack, Table, Pagination, Box, Button, Group } from "@mantine/core";
-import { IconBuildingStore } from "@tabler/icons-react"; // Ensure this import is correct
+import { getPurchases } from "../api/purchases";
+import { Title, Text, Stack, Table, Box, Pagination } from "@mantine/core";
 
 export default function Purchases() {
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["purchases"],
+    queryFn: getPurchases,
+  });
+  //   console.log(data);
+  //   console.log(JSON.stringify(data, null, 2));
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 15;
 
-  const {
-    data = [], // Initialize data as an empty array
-    isFetching,
-    isErrorFetch,
-    fetchError,
-    deletePurchases, // Changed to deletePurchases
-    isDeleting,
-  } = usePurchases(); // Changed to usePurchases hook
-
-  const { deletingId, opened, close, handleDelete, confirmDelete } = useDeleteModal(); // Invoke the hook
-
-  if (isFetching) {
+  if (isLoading) {
     return <Text>Loading...</Text>;
   }
 
-  if (isErrorFetch) {
-    console.error(fetchError); // Log the error for debugging
-    return <Text>{fetchError.message}</Text>;
+  if (isError) {
+    return <Text>{error.message}</Text>;
   }
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-  const paginatedData = data.slice(
+  const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
+  const paginatedData = data?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
   return (
-    <Stack align="center" overflow="hidden" pos="relative">
-      <Group justify="center" align="center">
-        <Title order={1}>Purchases</Title> 
-        <IconBuildingStore size="32px"/>
-      </Group>
-      <Table striped highlightOnHover withTableBorder>
-        <Table.Thead>
-          <Table.Tr>
-            <Table.Th>ID</Table.Th>
-            <Table.Th>ID Deposit</Table.Th>
-            <Table.Th>ID Provider</Table.Th>
-            <Table.Th>Purchase Date</Table.Th>
-            <Table.Th>Total Price</Table.Th>
-            <Table.Th>Created By</Table.Th>
-            <Table.Th>Actions</Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-
-        <Table.Tbody>
-          {paginatedData.map((purchase, index) => (
-            <Table.Tr key={purchase.id}>
-              <Table.Td>{(currentPage - 1) * itemsPerPage + index + 1}</Table.Td>
-              <Table.Td>{purchase.id_deposit}</Table.Td>
-              <Table.Td>{purchase.id_provider}</Table.Td>
-              <Table.Td>{purchase.purchase_date}</Table.Td>
-              <Table.Td>{purchase.total}</Table.Td>
-              <Table.Td>{purchase.created_by}</Table.Td>
-              <Table.Td> 
-                <Button
-                  color="red"
-                  onClick={() => handleDelete(purchase.id)}
-                  loading={deletingId === purchase.id && isDeleting}
-                >
-                  Delete
-                </Button>
-              </Table.Td>
+    <>
+      <Stack align="center">
+        <Title order={1}>Purchases</Title>
+        <Table striped highlightOnHover withTableBorder>
+          <Table.Thead>
+            <Table.Tr>
+              <Table.Th>ID</Table.Th>
+              <Table.Th>ID Deposit</Table.Th>
+              <Table.Th>ID Provider</Table.Th>
+              <Table.Th>Purchase Date</Table.Th>
+              <Table.Th>Total Price</Table.Th>
+              <Table.Th>Created By</Table.Th>
             </Table.Tr>
-          ))}
-        </Table.Tbody>
-      </Table>
-      <Box>
-        <Pagination
-          total={totalPages}
-          page={currentPage}
-          onChange={setCurrentPage}
-        />
-      </Box>
-      <ConfirmationModal
-        opened={opened}
-        onClose={close}
-        title="Confirm Deletion"
-        message="Are you sure you want to delete this purchase?"
-        onConfirm={() => confirmDelete(() => deletePurchases(deletingId))}
-        confirmLabel="Delete"
-        cancelLabel="Cancel"
-        confirmColor="red"
-        cancelColor="gray"
-        size="md"
-      />
-    </Stack>
+          </Table.Thead>
+
+          <Table.Tbody>
+            {paginatedData?.map((purchases, index) => (
+              <Table.Tr key={purchases.id}>
+                <Table.Td>{index + 1}</Table.Td>
+                <Table.Td>{purchases.id_provider}</Table.Td>
+                <Table.Td>{purchases.id_deposit}</Table.Td>
+                <Table.Td>{purchases.purchase_date}</Table.Td>
+                <Table.Td>{purchases.total}</Table.Td>
+                <Table.Td>{purchases.created_by}</Table.Td>
+              </Table.Tr>
+            ))}
+          </Table.Tbody>
+        </Table>
+        <Box>
+          <Pagination
+            total={totalPages}
+            page={currentPage}
+            onChange={setCurrentPage}
+          />
+        </Box>
+      </Stack>
+    </>
   );
 }

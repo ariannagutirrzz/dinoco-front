@@ -10,13 +10,3 @@ export const getDeposits = async () => {
     return [];
   }
 };
-
-export const deleteDeposits = async (id) => {
-  try {
-    const response = await apiClient.delete(`/deposits/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error("Error deleting deposit:", error);
-    return null;
-  }
-};

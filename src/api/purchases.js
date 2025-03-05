@@ -10,13 +10,3 @@ export const getPurchases = async () => {
     return [];
   }
 };
-
-export const deletePurchases = async (id) => {
-  try {
-    const response = await apiClient.delete(`/purchases/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error("Error deleting purchase:", error);
-    return null;
-  }
-};

@@ -10,14 +10,3 @@ export const getSales = async () => {
     return [];
   }
 };
-
-export const deleteSales = async (id) => {
-  try {
-    const response = await apiClient.delete(`/sales/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error("Error deleting sale:", error);
-    return null;
-  }
-};
-

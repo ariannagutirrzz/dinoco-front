@@ -10,14 +10,3 @@ export const getUsers = async () => {
     return [];
   }
 };
-
-export const deleteUsers = async (id) => {
-  try {
-    const response = await apiClient.delete(`/users/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error("Error deleting user:", error);
-    return null;
-  }
-};
-
