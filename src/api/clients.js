@@ -10,3 +10,13 @@ export const getClients = async () => {
     return [];
   }
 };
+
+export const deleteClients = async (id) => {
+  try {
+    const response = await apiClient.delete(`/clients/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting client:", error);
+    return null;
+  }
+};
