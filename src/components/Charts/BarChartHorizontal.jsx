@@ -3,6 +3,7 @@ import { scaleBand, scaleLinear, max } from "d3";
 import { ClientTooltip, TooltipContent, TooltipTrigger } from "./ClientTooltip"; // Ensure this path is correct
 import { useProducts } from "../../hooks/useProducts";
 
+
 const data = [
   { key: "Technology", value: 40},
   { key: "Financials", value: 25.3 },
@@ -21,7 +22,8 @@ const data = [
   { key: "Financial Sector", value: 0.6 },
 ].sort((a, b) => b.value - a.value);
 
-export default function BarChartHorizontal() {
+export function BarChartThinHorizontal() {
+
 
   //  We have to create a specific query from supabase to get the data we need for the chart - exmaple: the most saled products, then we will create a custom hook and utilize it here
 
