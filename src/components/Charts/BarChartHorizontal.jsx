@@ -22,7 +22,7 @@ const data = [
   { key: "Financial Sector", value: 0.6 },
 ].sort((a, b) => b.value - a.value);
 
-export function BarChartThinHorizontal() {
+export function BarChartHorizontal() {
 
 
   //  We have to create a specific query from supabase to get the data we need for the chart - exmaple: the most saled products, then we will create a custom hook and utilize it here
