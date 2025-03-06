@@ -10,6 +10,7 @@ import {
   Loader,
   Title,
   Stack,
+  Image
 } from "@mantine/core";
 import { IconAt, IconLock } from "@tabler/icons-react";
 import auth from "../api/auth.js";
@@ -54,7 +55,8 @@ export default function AuthTest() {
 
   return (
     <Stack align="center" justify="center" className="min-h-screen">
-      <Title order={1} align="center" className="mb-6">
+      <Image src="src\assets\Cloud-9.webp" w="12vh"></Image>
+      <Title order={2} align="center" className="mb-6">
          Choose an option to start
       </Title>
       <Card

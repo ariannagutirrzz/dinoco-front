@@ -68,10 +68,10 @@ export function NavbarSegmented() {
   return (
     <nav className={classes.navbar}>
       <div>
-        {/* ✅ "A2" Now Redirects to Home */}
+
         <Link to="/" className={classes.title}>
           <Text fw={500} size="sm" c="dimmed" mb="xs">
-            A2
+            Cloud 9
           </Text>
         </Link>
 
@@ -90,14 +90,14 @@ export function NavbarSegmented() {
       <div className={classes.navbarMain}>{links}</div>
 
       <div className={classes.footer}>
-        <a
+        {/* <a
           href="#"
           className={classes.link}
           onClick={(event) => event.preventDefault()}
         >
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Change account</span>
-        </a>
+        </a> */}
 
         <a
           href="#"
