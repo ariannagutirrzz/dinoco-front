@@ -69,13 +69,13 @@ export default function Providers() {
   return (
     <Stack align="center" overflow="hidden" pos="relative">
       <Group justify="center" align="center">
-        <Title order={1}>Providers</Title> 
+        <Title order={1}>Providers</Title>
         <IconCheckupList size="32px"/>
       </Group>
 
          {/* Skeleton Loading State */}
          {isFetching ? (
-        <Table striped highlightOnHover withTableBorder horizontalSpacing="xl" variant withColumnBorders>
+          <Table striped highlightOnHover withTableBorder>
           <Table.Thead>
             <Table.Tr>
               {[...Array(1)].map((_, index) => (
@@ -98,7 +98,7 @@ export default function Providers() {
           </Table.Tbody>
         </Table>
       ) : (
-        <Table striped highlightOnHover withTableBorder>
+        <Table striped highlightOnHover withTableBorder horizontalSpacing="xl" withColumnBorders>
           <Table.Thead>
             <Table.Tr>
               <Table.Th>ID</Table.Th>

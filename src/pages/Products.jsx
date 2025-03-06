@@ -110,7 +110,6 @@ export default function Products() {
             <Table.Th>Sale Unit</Table.Th>
             <Table.Th>Category</Table.Th>
             <Table.Th>Actions</Table.Th>
-            
           </Table.Tr>
         </Table.Thead>
 
