@@ -11,7 +11,7 @@ export const useClients = () => {
     data,
     isLoading: isFetching,
     isError: isErrorFetch,
-    error: fetchError,
+    error: errorMessage,
   } = useQuery({
     queryKey: ["clients"],
     queryFn: getClients,
@@ -38,10 +38,10 @@ export const useClients = () => {
   });
 
   return {
-    data,
+    data: data || [],
     isFetching,
     isErrorFetch,
-    fetchError,
+    errorMessage,
     deleteClients: deleteMutation.mutate,
     isDeleting: deleteMutation.isPending,
   };
