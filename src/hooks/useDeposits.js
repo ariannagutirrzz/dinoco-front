@@ -10,7 +10,7 @@ export const useDeposits = () => {
   const {
     data,
     isLoading: isFetching,
-    isError: isErrorFetch,
+    isError: errorMessage,
     error: fetchError,
   } = useQuery({
     queryKey: ["deposits"],
@@ -38,9 +38,9 @@ export const useDeposits = () => {
   });
 
   return {
-    data,
+    data: data || [],
     isFetching,
-    isErrorFetch,
+    errorMessage,
     fetchError,
     deleteDeposits: deleteMutation.mutate,
     isDeleting: deleteMutation.isPending,

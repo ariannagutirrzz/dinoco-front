@@ -11,7 +11,7 @@ export const useProviders = () => {
     data,
     isLoading: isFetching,
     isError: isErrorFetch,
-    error: fetchError,
+    error: errorMessage,
   } = useQuery({
     queryKey: ["providers"],
     queryFn: getProviders,
@@ -38,10 +38,10 @@ export const useProviders = () => {
   });
 
   return {
-    data,
+    data: data || [],
     isFetching,
     isErrorFetch,
-    fetchError,
+    errorMessage,
     deleteProviders: deleteMutation.mutate,
     isDeleting: deleteMutation.isPending,
   };

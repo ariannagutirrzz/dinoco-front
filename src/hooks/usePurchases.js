@@ -10,7 +10,7 @@ export const usePurchases = () => {
   const {
     data,
     isLoading: isFetching,
-    isError: isErrorFetch,
+    isError: errorMessage,
     error: fetchError,
   } = useQuery({
     queryKey: ["purchases"],
@@ -38,9 +38,9 @@ export const usePurchases = () => {
   });
 
   return {
-    data,
+    data: data || [],
     isFetching,
-    isErrorFetch,
+    errorMessage,
     fetchError,
     deletePurchases: deleteMutation.mutate,
     isDeleting: deleteMutation.isPending,

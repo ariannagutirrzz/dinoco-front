@@ -10,7 +10,7 @@ export const useUsers = () => {
   const {
     data,
     isLoading: isFetching,
-    isError: isErrorFetch,
+    isError: errorMessage,
     error: fetchError,
   } = useQuery({
     queryKey: ["users"],
@@ -38,9 +38,9 @@ export const useUsers = () => {
   });
 
   return {
-    data,
+    data: data || [],
     isFetching,
-    isErrorFetch,
+    errorMessage,
     fetchError,
     deleteUsers: deleteMutation.mutate,
     isDeleting: deleteMutation.isPending,
