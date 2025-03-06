@@ -11,10 +11,11 @@ export const useSales = () => {
     data,
     isLoading: isFetching,
     isError: isErrorFetch,
-    error: fetchError,
+    error: errorMesage,
   } = useQuery({
     queryKey: ["sales"],
     queryFn: getSales,
+    staleTime: 0,
   });
 
   // Delete sale
@@ -38,10 +39,10 @@ export const useSales = () => {
   });
 
   return {
-    data,
+    data: data || [],
     isFetching,
     isErrorFetch,
-    fetchError,
+    errorMesage,
     deleteSales: deleteMutation.mutate,
     isDeleting: deleteMutation.isPending,
   };

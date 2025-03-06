@@ -35,7 +35,7 @@ export default function Products() {
   }
 
   if (isErrorFetch) {
-    return <Text>{fetchError.message}</Text>;
+    return <Text>{fetchError}</Text>;
   }
 
   const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
@@ -50,7 +50,7 @@ export default function Products() {
         <Title order={1}>Products</Title> 
         <IconBuildingStore size="32px"/>
       </Group>
-      <Table striped highlightOnHover withTableBorder>
+      <Table striped highlightOnHover withTableBorder horizontalSpacing="xl" withColumnBorders>
         <Table.Thead>
           <Table.Tr>
             <Table.Th>ID</Table.Th>
@@ -107,7 +107,7 @@ export default function Products() {
         cancelLabel="Cancel"
         confirmColor="red"
         cancelColor="gray"
-        size="md"
+        size="sm"
       />
     </Stack>
   );
