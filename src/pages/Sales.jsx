@@ -15,7 +15,7 @@ import {
   Card,
   Skeleton,
 } from "@mantine/core";
-import { IconBuildingStore, IconMoodEmpty, IconAlertCircle } from "@tabler/icons-react";
+import { IconUserDollar, IconMoodEmpty, IconAlertCircle } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
 
 export default function Sales() {
@@ -69,7 +69,7 @@ export default function Sales() {
     <Stack align="center" overflow="hidden" pos="relative">
       <Group justify="center" align="center">
         <Title order={1}>Sales</Title>
-        <IconBuildingStore size="32px" />
+        <IconUserDollar size="32px" />
       </Group>
 
       {/* Skeleton Loading State */}
