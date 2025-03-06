@@ -75,7 +75,7 @@ export default function Providers() {
 
          {/* Skeleton Loading State */}
          {isFetching ? (
-        <Table striped highlightOnHover withTableBorder>
+        <Table striped highlightOnHover withTableBorder horizontalSpacing="xl" variant withColumnBorders>
           <Table.Thead>
             <Table.Tr>
               {[...Array(1)].map((_, index) => (
