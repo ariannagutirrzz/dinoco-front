@@ -15,6 +15,7 @@ export const useProducts = () => {
   } = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
+    staleTime: 0,
   });
 
   // Delete product
@@ -38,7 +39,7 @@ export const useProducts = () => {
   });
 
   return {
-    data,
+    data: data || [],
     isFetching,
     isErrorFetch,
     fetchError,

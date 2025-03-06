@@ -11,7 +11,7 @@ export const useSales = () => {
     data,
     isLoading: isFetching,
     isError: isErrorFetch,
-    error: errorMesage,
+    error: errorMessage,
   } = useQuery({
     queryKey: ["sales"],
     queryFn: getSales,
@@ -42,7 +42,7 @@ export const useSales = () => {
     data: data || [],
     isFetching,
     isErrorFetch,
-    errorMesage,
+    errorMessage,
     deleteSales: deleteMutation.mutate,
     isDeleting: deleteMutation.isPending,
   };

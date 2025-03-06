@@ -1,7 +1,3 @@
-import { useSales } from "../hooks/useSales";
-import { useState } from "react";
-import { useDeleteModal } from "../hooks/useDeleteModal";
-import { ConfirmationModal } from "../components/Modals/ConfirmationModal";
 import {
   Title,
   Text,
@@ -15,6 +11,10 @@ import {
   Card,
   Skeleton,
 } from "@mantine/core";
+import { useSales } from "../hooks/useSales";
+import { useState } from "react";
+import { useDeleteModal } from "../hooks/useDeleteModal";
+import { ConfirmationModal } from "../components/Modals/ConfirmationModal";
 import { IconUserDollar, IconMoodEmpty, IconAlertCircle } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
 
@@ -26,7 +26,7 @@ export default function Sales() {
     data,
     isFetching,
     isErrorFetch,
-    errorMesage,
+    // errorMessage,
     deleteSales,
     isDeleting,
   } = useSales();
@@ -111,6 +111,7 @@ export default function Sales() {
               <Table.Th>Actions</Table.Th>
             </Table.Tr>
           </Table.Thead>
+
           <Table.Tbody>
             {paginatedData.map((sale, index) => (
               <Table.Tr key={sale.id}>
