@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDeleteModal } from "../hooks/useDeleteModal";
 import { ConfirmationModal } from "../components/Modals/ConfirmationModal";
 import { Title, Text, Stack, Table, Pagination, Box, Button, Group } from "@mantine/core";
-import { IconBuildingStore } from "@tabler/icons-react"; // Ensure this import is correct
+import { IconCheckupList } from "@tabler/icons-react"; // Ensure this import is correct
 
 
 export default function Providers() {
@@ -41,7 +41,7 @@ export default function Providers() {
     <Stack align="center" overflow="hidden" pos="relative">
       <Group justify="center" align="center">
         <Title order={1}>Providers</Title> 
-        <IconBuildingStore size="32px"/>
+        <IconCheckupList size="32px"/>
       </Group>
         <Table striped highlightOnHover withTableBorder>
           <Table.Thead>
