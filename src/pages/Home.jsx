@@ -1,18 +1,16 @@
-import { Title, Text, Button, Stack } from "@mantine/core";
-import { notify } from "../utils/Notifications/Notifications";
+import { Title, Text, Stack, Image, Group } from "@mantine/core";
 
 export default function Home() {
-  function message() {
-    notify("success", "Hello", "This is a message");
-  }
 
   return (
     <>
-      <Stack align="center">
+      <Stack align="center" justify="center" h="90vh">
+        <Group>
         <Title order={1}>Home</Title>
-        <Text>Welcome to the Home page. </Text>
-        <Text>This is an Inventory System.</Text>
-        <Button onClick={message}>Click me</Button>
+        <Image src="src\assets\Cloud-9.webp" w="8vh"></Image>
+        </Group>
+
+        <Text>Select an option to start working.</Text>
       </Stack>
     </>
   );
