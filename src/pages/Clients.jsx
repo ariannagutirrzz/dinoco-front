@@ -102,7 +102,7 @@ export default function Clients() {
         <Table.Thead>
           <Table.Tr>
             <Table.Th>ID</Table.Th>
-            <Table.Th>Id Document</Table.Th>
+            <Table.Th>Document ID</Table.Th>
             <Table.Th>Name</Table.Th>
             <Table.Th>Birthday</Table.Th>
             <Table.Th>Phone Number</Table.Th>

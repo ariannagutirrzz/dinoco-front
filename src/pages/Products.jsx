@@ -108,7 +108,9 @@ export default function Products() {
             <Table.Th>Expire Date</Table.Th>
             <Table.Th>Deposit</Table.Th>
             <Table.Th>Sale Unit</Table.Th>
+            <Table.Th>Category</Table.Th>
             <Table.Th>Actions</Table.Th>
+            
           </Table.Tr>
         </Table.Thead>
 
@@ -124,6 +126,7 @@ export default function Products() {
               <Table.Td>{product.expire_date}</Table.Td>
               <Table.Td>{product.id_deposit}</Table.Td>
               <Table.Td>{product.sales_unit}</Table.Td>
+              <Table.Td>{product.category}</Table.Td>
               <Table.Td>
                 <Button
                   color="red"
