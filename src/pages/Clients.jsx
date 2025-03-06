@@ -98,7 +98,7 @@ export default function Clients() {
           </Table.Tbody>
         </Table>
       ) : (
-      <Table striped highlightOnHover withTableBorder>
+        <Table striped highlightOnHover withTableBorder horizontalSpacing="xl" variant withColumnBorders>
         <Table.Thead>
           <Table.Tr>
             <Table.Th>ID</Table.Th>

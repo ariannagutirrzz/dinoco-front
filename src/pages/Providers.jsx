@@ -1,10 +1,22 @@
+import {
+  Title,
+  Text,
+  Stack,
+  Table,
+  Pagination,
+  Box,
+  Button,
+  Group,
+  Center,
+  Card,
+  Skeleton,
+} from "@mantine/core";
 import { useProviders } from "../hooks/useProviders"; 
 import { useState } from "react";
 import { useDeleteModal } from "../hooks/useDeleteModal";
 import { ConfirmationModal } from "../components/Modals/ConfirmationModal";
-import { Title, Text, Stack, Table, Pagination, Box, Button, Group } from "@mantine/core";
-import { IconCheckupList } from "@tabler/icons-react"; // Ensure this import is correct
-
+import { IconCheckupList, IconMoodEmpty, IconAlertCircle } from "@tabler/icons-react"; // Ensure this import is correct
+import { notifications } from "@mantine/notifications";
 
 export default function Providers() {
 
@@ -15,21 +27,38 @@ export default function Providers() {
       data = [], // Initialize data as an empty array
       isFetching,
       isErrorFetch,
-      fetchError,
+      // errorMessage,
       deleteProviders,
       isDeleting,
     } = useProviders();
 
     const { deletingId, opened, close, handleDelete, confirmDelete } = useDeleteModal(); // Invoke the hook
 
-    if (isFetching) {
-      return <Text>Loading...</Text>;
-    }
-  
-    if (isErrorFetch) {
-      console.error(fetchError); // Log the error for debugging
-      return <Text>{fetchError.message}</Text>;
-    }
+  // Show error notification if there's an error
+  if (isErrorFetch) {
+    notifications.show({
+      title: "Error",
+      message: "Failed to fetch sales. Please try again later.",
+      color: "red",
+      icon: <IconAlertCircle size={18} />,
+    });
+  }
+
+  // Handle empty data
+  if (!isFetching && (!data || data.length === 0)) {
+    return (
+      <Center style={{ height: "60vh" }}>
+        <Card shadow="sm" padding="lg" radius="md" withBorder>
+          <Group justify="center" align="center">
+            <IconMoodEmpty size={48} color="gray" />
+            <Text size="xl">
+              No sales found. Start by adding a new sale!
+            </Text>
+          </Group>
+        </Card>
+      </Center>
+    );
+  }
 
   const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
   const paginatedData = data?.slice(
@@ -43,6 +72,32 @@ export default function Providers() {
         <Title order={1}>Providers</Title> 
         <IconCheckupList size="32px"/>
       </Group>
+
+         {/* Skeleton Loading State */}
+         {isFetching ? (
+        <Table striped highlightOnHover withTableBorder>
+          <Table.Thead>
+            <Table.Tr>
+              {[...Array(1)].map((_, index) => (
+                <Table.Th key={index}>
+                  <Skeleton height={20} width="100%" />
+                </Table.Th>
+              ))}
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>
+            {[...Array(16)].map((_, rowIndex) => (
+              <Table.Tr key={rowIndex}>
+                {[...Array(1)].map((_, colIndex) => (
+                  <Table.Td key={colIndex}>
+                    <Skeleton height={20} width="100%" />
+                  </Table.Td>
+                ))}
+              </Table.Tr>
+            ))}
+          </Table.Tbody>
+        </Table>
+      ) : (
         <Table striped highlightOnHover withTableBorder>
           <Table.Thead>
             <Table.Tr>
@@ -77,7 +132,7 @@ export default function Providers() {
               </Table.Tr>
             ))}
           </Table.Tbody>
-        </Table>
+        </Table>)}
         <Box>
           <Pagination
             total={totalPages}
