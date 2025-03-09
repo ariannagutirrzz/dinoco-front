@@ -4,21 +4,16 @@ import { ClientTooltip, TooltipContent, TooltipTrigger } from "./ClientTooltip";
 import { useProducts } from "../../hooks/useProducts";
 
 const data = [
-  { key: "Technology", value: 40},
-  { key: "Financials", value: 25.3 },
-  { key: "Energy", value: 23.1 },
-  { key: "Cyclical", value: 19.5 },
-  { key: "Defensive", value: 14.7 },
-  { key: "Utilities", value: 5.8 },
-  { key: "Healthcare", value: 5.3 },
-  { key: "Industrials", value: 4.7 },
-  { key: "Materials", value: 4.4 },
-  { key: "Industrial Goods", value: 1.1 },
-  { key: "Energy Sector", value: 1.0 },
-  { key: "Technology Sector", value: 0.9 },
-  { key: "Healthcare Sector", value: 0.8 },
-  { key: "Consumer Goods", value: 0.7 },
-  { key: "Financial Sector", value: 0.6 },
+  { key: "Luces led", value: 40},
+  { key: "Lupitas h4", value: 25.3 },
+  { key: "Puñitos", value: 23.1 },
+  { key: "Tercer Stop", value: 19.5 },
+  { key: "Cargadores de bateria", value: 14.7 },
+  { key: "Barbero Spoiler", value: 5.8 },
+  { key: "Forrero de volante", value: 60 },
+  { key: "Cubre asientos", value: 4.7 },
+  { key: "Par Bones", value: 4.5 },
+  { key: "Cubre espejos", value: 30 },
 ].sort((a, b) => b.value - a.value);
 
 export default function BarChartHorizontal() {
@@ -96,12 +91,11 @@ export default function BarChartHorizontal() {
                     transform: "translateY(-4px)",
                     borderRadius: "0 6px 6px 0",
                   }}
-                  className="absolute bg-[#0098da]"
                 />
               </TooltipTrigger>
               <TooltipContent>
-                <div>{d.key}</div>
-                <div className="text-gray-500 text-sm">{d.value}</div>
+                <div className="text-white">{d.key}</div>
+                <div className="text-white">{d.value}</div>
               </TooltipContent>
             </ClientTooltip>
           );
@@ -166,7 +160,7 @@ export default function BarChartHorizontal() {
               left: "0",
               top: `${yScale(entry.key) + yScale.bandwidth() / 2}%`,
             }}
-            className="absolute text-xs text-gray-400 -translate-y-1/2 w-full text-right pr-2"
+            className="absolute text-xs text-black -translate-y-1/2 w-full text-right pr-2"
           >
             {entry.key}
           </span>
