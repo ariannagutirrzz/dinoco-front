@@ -104,7 +104,7 @@ export default function Sales() {
               <Table.Th>ID</Table.Th>
               <Table.Th>ID Client</Table.Th>
               <Table.Th>ID Seller</Table.Th>
-              <Table.Th>ID Product</Table.Th>
+              <Table.Th>Product</Table.Th>
               <Table.Th>Quantity</Table.Th>
               <Table.Th>Total Price</Table.Th>
               <Table.Th>Sale Date</Table.Th>
@@ -118,7 +118,7 @@ export default function Sales() {
                 <Table.Td>{(currentPage - 1) * itemsPerPage + index + 1}</Table.Td>
                 <Table.Td>{sale.id_client}</Table.Td>
                 <Table.Td>{sale.id_seller}</Table.Td>
-                <Table.Td>{sale.id_product}</Table.Td>
+                <Table.Td>{sale.product}</Table.Td>
                 <Table.Td>{sale.quantity}</Table.Td>
                 <Table.Td>{sale.total_price}</Table.Td>
                 <Table.Td>{sale.sale_date}</Table.Td>

@@ -123,7 +123,7 @@ export default function Products() {
               <Table.Td>${product.price}</Table.Td>
               <Table.Td>{product.quantity}</Table.Td>
               <Table.Td>{product.expire_date}</Table.Td>
-              <Table.Td>{product.id_deposit}</Table.Td>
+              <Table.Td>{product.deposit}</Table.Td>
               <Table.Td>{product.sales_unit}</Table.Td>
               <Table.Td>{product.category}</Table.Td>
               <Table.Td>

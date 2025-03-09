@@ -100,8 +100,8 @@ export default function Purchases() {
         <Table.Thead>
           <Table.Tr>
             <Table.Th>ID</Table.Th>
-            <Table.Th>ID Deposit</Table.Th>
-            <Table.Th>ID Provider</Table.Th>
+            <Table.Th>Deposit</Table.Th>
+            <Table.Th>Provider</Table.Th>
             <Table.Th>Purchase Date</Table.Th>
             <Table.Th>Total Price</Table.Th>
             <Table.Th>Created By</Table.Th>
@@ -113,8 +113,8 @@ export default function Purchases() {
           {paginatedData.map((purchase, index) => (
             <Table.Tr key={purchase.id}>
               <Table.Td>{(currentPage - 1) * itemsPerPage + index + 1}</Table.Td>
-              <Table.Td>{purchase.id_deposit}</Table.Td>
-              <Table.Td>{purchase.id_provider}</Table.Td>
+              <Table.Td>{purchase.deposit}</Table.Td>
+              <Table.Td>{purchase.provider}</Table.Td>
               <Table.Td>{purchase.purchase_date}</Table.Td>
               <Table.Td>{purchase.total}</Table.Td>
               <Table.Td>{purchase.created_by}</Table.Td>
