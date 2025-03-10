@@ -13,19 +13,39 @@ export default function Charts() {
           display: "grid",
           gridTemplateColumns: "1fr 1fr 1fr",
           gap: "1rem",
-          border: "2px solid #e5e7eb",
-          borderRadius: "10px",
           padding: "1rem",
           marginTop: "1rem",
         }}
       >
-        <div style={{ borderRight: "2px solid #e5e7eb", paddingRight: "1rem" }}>
+        <div
+          style={{
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            borderRadius: "10px",
+            padding: "1rem",
+          }}
+        >
+          <Title order={3}>BEST SELLERS</Title>
           <PieChartLabels />
         </div>
-        <div style={{ borderRight: "2px solid #e5e7eb", paddingRight: "1rem" }}>
+        <div
+          style={{
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            borderRadius: "10px",
+            padding: "1rem",
+          }}
+        >
+         <Title order={3}>WORST SELLERS</Title>
+
           <PieChartLabels />
         </div>
-        <div>
+        <div
+          style={{
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            borderRadius: "10px",
+            padding: "1rem",
+          }}
+        >
+           <Title order={3}>BEST CLIENTS</Title>
           <PieChartLabels />
         </div>
       </Group>
@@ -37,15 +57,29 @@ export default function Charts() {
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "1rem",
-          border: "2px solid #e5e7eb",
-          borderRadius: "10px",
           padding: "1rem",
         }}
       >
-        <div style={{ borderRight: "2px solid #e5e7eb", paddingRight: "1rem" }}>
+        <div
+          style={{
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            borderRadius: "10px",
+            padding: "1rem",
+          }}
+        >
+                    <Title order={3}>PRODUCTS WITH MORE STOCK</Title>
+
           <BarChartHorizontal />
         </div>
-        <div>
+        <div
+          style={{
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            borderRadius: "10px",
+            padding: "1rem",
+          }}
+        >
+                    <Title order={3}>PRODUCTS THAT REQUIRES STOCK</Title>
+
           <BarChartHorizontal />
         </div>
       </Group>
