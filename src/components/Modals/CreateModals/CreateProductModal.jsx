@@ -17,9 +17,11 @@ export function CreateProductModal({
   newProduct,
   setNewProduct,
   handleCreateProduct,
+  handleUpdateProduct,
   isCreating,
+  isUpdating,
+  isEditMode,
 }) {
-
   const { data: deposits } = useDeposits();
   const { data: categories } = useCategories();
 
@@ -28,8 +30,17 @@ export function CreateProductModal({
       opened={createModalOpened}
       onClose={() => {
         closeCreateModal();
+        setNewProduct({
+          name: "",
+          price: 0,
+          quantity: 0,
+          deposit: "",
+          sales_unit: "",
+          category: "",
+          expire_date: null,
+        });
       }}
-      title="Create Product"
+      title={isEditMode ? "Edit Product" : "Create Product"}
     >
       <Stack>
         <TextInput
@@ -65,7 +76,6 @@ export function CreateProductModal({
           onChange={(value) => setNewProduct({ ...newProduct, deposit: value })}
           required
         />
-
         <TextInput
           label="Sales Unit"
           placeholder="e.g. kg, g, l, ml, etc."
@@ -87,15 +97,18 @@ export function CreateProductModal({
           }
         />
         <DateInput
-            label="Expire Date"
-            value={newProduct.expire_date}
-            onChange={(value) =>
-                setNewProduct({ ...newProduct, expire_date: value })
-            }
+          label="Expire Date"
+          value={newProduct.expire_date ? new Date(newProduct.expire_date) : null}
+          onChange={(value) =>
+            setNewProduct({ ...newProduct, expire_date: value })
+          }
         />
-        <Button onClick={handleCreateProduct} loading={isCreating}>
-          Create
-        </Button>
+        <Button
+          onClick={isEditMode ? handleUpdateProduct : handleCreateProduct}
+          loading={isCreating || isUpdating}
+        >
+          {isEditMode ? "Update" : "Create"}
+          </Button>
       </Stack>
     </Modal>
   );
@@ -107,5 +120,8 @@ CreateProductModal.propTypes = {
   newProduct: PropTypes.object.isRequired,
   setNewProduct: PropTypes.func.isRequired,
   handleCreateProduct: PropTypes.func.isRequired,
+  handleUpdateProduct: PropTypes.func,
   isCreating: PropTypes.bool.isRequired,
+  isUpdating: PropTypes.bool,
+  isEditMode: PropTypes.bool,
 };

@@ -1,6 +1,6 @@
 // hooks/useProducts.js
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getProducts, deleteProduct, createProduct } from "../api/products";
+import { getProducts, deleteProduct, createProduct, updateProduct } from "../api/products";
 import { notifications } from "@mantine/notifications";
 
 export const useProducts = () => {
@@ -59,6 +59,26 @@ export const useProducts = () => {
     },
   });
 
+  // Update product
+  const updateMutation = useMutation({
+    mutationFn: updateProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+      notifications.show({
+        title: "Success",
+        message: "Product updated successfully",
+        color: "green",
+      });
+    },
+    onError: (error) => {
+      notifications.show({
+        title: "Error",
+        message: error.message,
+        color: "red",
+      });
+    },
+  });
+
   return {
     data: data || [],
     isFetching,
@@ -68,5 +88,7 @@ export const useProducts = () => {
     isDeleting: deleteMutation.isPending,
     createProduct: createMutation.mutate,
     isCreating: createMutation.isPending,
+    updateProduct: updateMutation.mutate,
+    isUpdating: updateMutation.isPending,
   };
 };

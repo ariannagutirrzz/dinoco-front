@@ -24,3 +24,15 @@ export const createProduct = async (product) => {
     return null;
   }
 };
+
+export const updateProduct = async (productData) => {
+  try {
+    const { id, ...product } = productData;
+
+    const response = await apiClient.put(`/products/${id}`, product);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating product:", error);
+    return null;
+  }
+};

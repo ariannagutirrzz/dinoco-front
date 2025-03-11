@@ -23,7 +23,7 @@ import { useDisclosure } from "@mantine/hooks";
 
 export default function Products() {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 15;
 
   const {
     data,
@@ -33,13 +33,18 @@ export default function Products() {
     isDeleting,
     createProduct,
     isCreating,
+    updateProduct,
+    isUpdating,
   } = useProducts();
 
 
   const { deletingId, opened, close, handleDelete, confirmDelete } = useDeleteModal();
 
+
   // Modal for creating a product
   const [createModalOpened, { open: openCreateModal, close: closeCreateModal }] = useDisclosure(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [newProduct, setNewProduct] = useState({
     name: "",
     price: 0,
@@ -67,6 +72,41 @@ export default function Products() {
     });
   };
 
+  const handleEditProduct = (product) => {
+    setSelectedProduct(product);
+    setNewProduct({
+      name: product.name,
+      price: product.price,
+      quantity: product.quantity,
+      deposit: product.deposit,
+      sales_unit: product.sales_unit,
+      category: product.category,
+      expire_date: product.expire_date ? new Date(product.expire_date) : null,
+    });
+    setIsEditMode(true);
+    openCreateModal();
+  };
+
+  const handleUpdateProduct = () => {
+    updateProduct(
+      { id: selectedProduct.id, ...newProduct },
+      {
+        onSuccess: () => {
+          closeCreateModal();
+          setNewProduct({
+            name: "",
+            price: 0,
+            quantity: 0,
+            deposit: "",
+            sales_unit: "",
+            category: "",
+            expire_date: null,
+          });
+          setIsEditMode(false);
+        },
+      }
+    );
+  };
   // Show error notification if there's an error
   if (isErrorFetch) {
     notifications.show({
@@ -144,7 +184,7 @@ export default function Products() {
                   <Table.Th style={{ minWidth: "250px", textAlign: "center" }}>Name</Table.Th>
                   <Table.Th>Price</Table.Th>
                   <Table.Th>Quantity</Table.Th>
-                  <Table.Th>Deposit</Table.Th>
+                  <Table.Th style={{ minWidth: "140px", textAlign: "center" }}>Deposit</Table.Th>
                   <Table.Th>Category</Table.Th>
                   <Table.Th>Sale Unit</Table.Th>
                   <Table.Th>Expire Date</Table.Th>
@@ -168,9 +208,7 @@ export default function Products() {
                           variant="outline"
                           size="xs"
                           leftSection={<IconEye size={14} />}
-                          onClick={() => {
-                            console.log("View details for product:", product.id);
-                          }}
+                          onClick={() => handleEditProduct(product)}
                         >
                           View
                         </Button>
@@ -219,11 +257,17 @@ export default function Products() {
       {/* Create Product Modal */}
       <CreateProductModal
         createModalOpened={createModalOpened}
-        closeCreateModal={closeCreateModal}
+        closeCreateModal={() => {
+          closeCreateModal();
+          setIsEditMode(false); // This was necessary to reset the edit mode
+        }}
         newProduct={newProduct}
         setNewProduct={setNewProduct}
         handleCreateProduct={handleCreateProduct}
+        handleUpdateProduct={handleUpdateProduct}
         isCreating={isCreating}
+        isUpdating={isUpdating}
+        isEditMode={isEditMode}
       />
     </Stack>
   );
