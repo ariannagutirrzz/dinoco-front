@@ -102,8 +102,8 @@ export default function Sales() {
           <Table.Thead>
             <Table.Tr>
               <Table.Th>ID</Table.Th>
-              <Table.Th>ID Client</Table.Th>
-              <Table.Th>ID Seller</Table.Th>
+              <Table.Th>Client</Table.Th>
+              <Table.Th>Seller</Table.Th>
               <Table.Th>Product</Table.Th>
               <Table.Th>Quantity</Table.Th>
               <Table.Th>Total Price</Table.Th>
@@ -116,8 +116,8 @@ export default function Sales() {
             {paginatedData.map((sale, index) => (
               <Table.Tr key={sale.id}>
                 <Table.Td>{(currentPage - 1) * itemsPerPage + index + 1}</Table.Td>
-                <Table.Td>{sale.id_client}</Table.Td>
-                <Table.Td>{sale.id_seller}</Table.Td>
+                <Table.Td>{sale.clients?.name}</Table.Td>
+                <Table.Td>{sale.users?.name}</Table.Td>
                 <Table.Td>{sale.product}</Table.Td>
                 <Table.Td>{sale.quantity}</Table.Td>
                 <Table.Td>{sale.total_price}</Table.Td>

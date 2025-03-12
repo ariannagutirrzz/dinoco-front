@@ -35,7 +35,7 @@ const tabs = {
   ],
   general: [
     { link: "", label: "Receipts", icon: IconLicense },
-    { link: "", label: "Refunds", icon: IconReceiptRefund },
+    { link: "/refunds", label: "Refunds", icon: IconReceiptRefund },
     { link: "", label: "Security", icon: IconFingerprint },
     { link: "", label: "Other Settings", icon: IconSettings },
     { link: "/users", label: "Users", icon: IconUsers },
