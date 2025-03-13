@@ -8,6 +8,7 @@ import {
   Button,
 } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
+import '@mantine/dates/styles.css';
 import { useCategories } from "../../../hooks/useCategories";
 import { useDeposits } from "../../../hooks/useDeposits";
 
