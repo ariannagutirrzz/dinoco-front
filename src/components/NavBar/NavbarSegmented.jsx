@@ -18,6 +18,7 @@ import {
   IconCheckupList,
   IconUserDollar,
   IconGraph,
+  IconHelp,
 } from "@tabler/icons-react";
 import { SegmentedControl, Text } from "@mantine/core";
 import classes from "./NavbarSegmented.module.css";
@@ -38,7 +39,7 @@ const tabs = {
     { link: "/refunds", label: "Refunds", icon: IconReceiptRefund },
     { link: "", label: "Security", icon: IconFingerprint },
     { link: "", label: "Other Settings", icon: IconSettings },
-    { link: "/users", label: "Users", icon: IconUsers },
+    { link: "/about", label: "About", icon: IconHelp },
   ],
 };
 

@@ -14,6 +14,7 @@ import Sales from "../pages/Sales";
 import Charts from "../pages/Charts";
 import Auth from "../pages/Auth";
 import Refunds from "../pages/Refunds";
+import About from "../pages/About";
 
 export default function AppRoutes() {
   return (
@@ -34,6 +35,7 @@ export default function AppRoutes() {
             <Route path="/sales" element={<Sales />} />
             <Route path="/refunds" element={<Refunds />} />
             <Route path="/charts" element={<Charts />} />
+            <Route path="/about" element={<About />} />
           </Route>
         </Route>
       </Routes>
