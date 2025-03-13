@@ -13,6 +13,7 @@ import Purchases from "../pages/Purchases";
 import Sales from "../pages/Sales";
 import Charts from "../pages/Charts";
 import Auth from "../pages/Auth";
+import Refunds from "../pages/Refunds";
 
 export default function AppRoutes() {
   return (
@@ -31,6 +32,7 @@ export default function AppRoutes() {
             <Route path="/providers" element={<Providers />} />
             <Route path="/purchases" element={<Purchases />} />
             <Route path="/sales" element={<Sales />} />
+            <Route path="/refunds" element={<Refunds />} />
             <Route path="/charts" element={<Charts />} />
           </Route>
         </Route>
