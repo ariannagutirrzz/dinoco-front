@@ -1,6 +1,6 @@
 // hooks/useUsers.js
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getUsers, deleteUsers } from "../api/users";
+import { getUsers, deleteUser, createUser, updateUser } from "../api/users";
 import { notifications } from "@mantine/notifications";
 
 export const useUsers = () => {
@@ -8,18 +8,19 @@ export const useUsers = () => {
 
   // Fetch users
   const {
-    data,
+    data = [],
     isLoading: isFetching,
-    isError: errorMessage,
+    isError: isErrorFetch,
     error: fetchError,
   } = useQuery({
     queryKey: ["users"],
     queryFn: getUsers,
+    staleTime: 0,
   });
 
   // Delete user
   const deleteMutation = useMutation({
-    mutationFn: deleteUsers,
+    mutationFn: deleteUser,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
       notifications.show({
@@ -29,20 +30,67 @@ export const useUsers = () => {
       });
     },
     onError: (error) => {
+      const errorMessage = error.response?.data?.message || error.message || "An unknown error occurred";
       notifications.show({
         title: "Error",
-        message: error.message,
+        message: errorMessage,
+        color: "red",
+      });
+    },
+  });
+
+  // Create user
+  const createMutation = useMutation({
+    mutationFn: createUser,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+      notifications.show({
+        title: "Success",
+        message: "User created successfully",
+        color: "green",
+      });
+    },
+    onError: (error) => {
+      const errorMessage = error.response?.data?.message || error.message || "An unknown error occurred";
+      notifications.show({
+        title: "Error",
+        message: errorMessage,
+        color: "red",
+      });
+    },
+  });
+
+  // Update user
+  const updateMutation = useMutation({
+    mutationFn: updateUser,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+      notifications.show({
+        title: "Success",
+        message: "User updated successfully",
+        color: "green",
+      });
+    },
+    onError: (error) => {
+      const errorMessage = error.response?.data?.message || error.message || "An unknown error occurred";
+      notifications.show({
+        title: "Error",
+        message: errorMessage,
         color: "red",
       });
     },
   });
 
   return {
-    data: data || [],
+    data,
     isFetching,
-    errorMessage,
+    isErrorFetch,
     fetchError,
-    deleteUsers: deleteMutation.mutate,
+    deleteUser: deleteMutation.mutate,
     isDeleting: deleteMutation.isPending,
+    createUser: createMutation.mutate,
+    isCreating: createMutation.isPending,
+    updateUser: updateMutation.mutate,
+    isUpdating: updateMutation.isPending,
   };
 };
