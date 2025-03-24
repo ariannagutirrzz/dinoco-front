@@ -42,6 +42,6 @@ ConfirmationModal.propTypes = {
   cancelLabel: PropTypes.string,
   confirmColor: PropTypes.string,
   cancelColor: PropTypes.string,
-  size: PropTypes.oneOf(["xs", "sm", "xl", "lg", "xl"]),
+  size: PropTypes.oneOf(["xs", "sm", "xl", "lg", "xl", "md"]),
 };
 

@@ -1,6 +1,5 @@
-// hooks/useSales.js
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getSales, deleteSales } from "../api/sales";
+import { getSales, deleteSale, createSale, updateSale } from "../api/sales";
 import { notifications } from "@mantine/notifications";
 
 export const useSales = () => {
@@ -11,7 +10,7 @@ export const useSales = () => {
     data,
     isLoading: isFetching,
     isError: isErrorFetch,
-    error: errorMessage,
+    error: fetchError,
   } = useQuery({
     queryKey: ["sales"],
     queryFn: getSales,
@@ -20,7 +19,7 @@ export const useSales = () => {
 
   // Delete sale
   const deleteMutation = useMutation({
-    mutationFn: deleteSales,
+    mutationFn: deleteSale,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["sales"] });
       notifications.show({
@@ -38,12 +37,57 @@ export const useSales = () => {
     },
   });
 
+  // Create sale
+  const createMutation = useMutation({
+    mutationFn: createSale,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["sales"] });
+      notifications.show({
+        title: "Success",
+        message: "Sale created successfully",
+        color: "green",
+      });
+    },
+    onError: (error) => {
+      alert(error.message);
+      notifications.show({
+        title: "Error",
+        message: error.message,
+        color: "red",
+      });
+    },
+  });
+
+  // Update sale
+  const updateMutation = useMutation({
+    mutationFn: updateSale,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["sales"] });
+      notifications.show({
+        title: "Success",
+        message: "Sale updated successfully",
+        color: "green",
+      });
+    },
+    onError: (error) => {
+      notifications.show({
+        title: "Error",
+        message: error.message,
+        color: "red",
+      });
+    },
+  });
+
   return {
     data: data || [],
     isFetching,
     isErrorFetch,
-    errorMessage,
-    deleteSales: deleteMutation.mutate,
+    fetchError,
+    deleteSale: deleteMutation.mutate,
     isDeleting: deleteMutation.isPending,
+    createSale: createMutation.mutate,
+    isCreating: createMutation.isPending,
+    updateSale: updateMutation.mutate,
+    isUpdating: updateMutation.isPending,
   };
 };

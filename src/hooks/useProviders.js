@@ -1,6 +1,6 @@
 // hooks/useProviders.js
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getProviders, deleteProviders } from "../api/providers";
+import { getProviders, deleteProvider, createProvider, updateProvider } from "../api/providers";
 import { notifications } from "@mantine/notifications";
 
 export const useProviders = () => {
@@ -11,15 +11,16 @@ export const useProviders = () => {
     data,
     isLoading: isFetching,
     isError: isErrorFetch,
-    error: errorMessage,
+    error: fetchError,
   } = useQuery({
     queryKey: ["providers"],
     queryFn: getProviders,
+    staleTime: 0,
   });
 
   // Delete provider
   const deleteMutation = useMutation({
-    mutationFn: deleteProviders,
+    mutationFn: deleteProvider,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["providers"] });
       notifications.show({
@@ -37,12 +38,57 @@ export const useProviders = () => {
     },
   });
 
+  // Create provider
+  const createMutation = useMutation({
+    mutationFn: createProvider,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["providers"] });
+      notifications.show({
+        title: "Success",
+        message: "Provider created successfully",
+        color: "green",
+      });
+    },
+    onError: (error) => {
+      alert(error.message);
+      notifications.show({
+        title: "Error",
+        message: error.message,
+        color: "red",
+      });
+    },
+  });
+
+  // Update provider
+  const updateMutation = useMutation({
+    mutationFn: updateProvider,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["providers"] });
+      notifications.show({
+        title: "Success",
+        message: "Provider updated successfully",
+        color: "green",
+      });
+    },
+    onError: (error) => {
+      notifications.show({
+        title: "Error",
+        message: error.message,
+        color: "red",
+      });
+    },
+  });
+
   return {
     data: data || [],
     isFetching,
     isErrorFetch,
-    errorMessage,
-    deleteProviders: deleteMutation.mutate,
+    fetchError,
+    deleteProvider: deleteMutation.mutate,
     isDeleting: deleteMutation.isPending,
+    createProvider: createMutation.mutate,
+    isCreating: createMutation.isPending,
+    updateProvider: updateMutation.mutate,
+    isUpdating: updateMutation.isPending,
   };
 };
